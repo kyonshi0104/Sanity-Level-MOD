@@ -1,0 +1,13 @@
+{
+  "death.attack.frenzy": "%1$s couldn't keep his sanity.",
+  "effect.sanity-level.calm": "Calm",
+  "effect.sanity-level.sanity_recovery": "Sanity Recovery",
+  "item.sanity-level.caramel": "Caramel",
+  "item.sanity-level.milk_caramel": "Milk Caramel",
+  "item.sanity-level.knot_of_serenity": "Knot of Serenity",
+  "item.sanity-level.knot_of_serenity.tooltip": "Prevents all sanity drain while in inventory",
+  "item.minecraft.potion.effect.calm": "Potion of Calm",
+  "item.minecraft.splash_potion.effect.calm": "Splash Potion of Calm",
+  "item.minecraft.lingering_potion.effect.calm": "Lingering Potion of Calm",
+  "item.minecraft.tipped_arrow.effect.calm": "Arrow of Calm"
+}

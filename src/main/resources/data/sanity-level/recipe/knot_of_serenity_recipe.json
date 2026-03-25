@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#N#",
+    "QHQ",
+    "#n#"
+  ],
+  "key": {
+    "#": "minecraft:amethyst_shard",
+    "N": "minecraft:nether_star",
+    "Q": "minecraft:quartz",
+    "H": "minecraft:heart_of_the_sea",
+    "n": "minecraft:netherite_ingot"
+  },
+  "result": {
+    "id": "sanity-level:knot_of_serenity",
+    "count": 1
+  }
+}

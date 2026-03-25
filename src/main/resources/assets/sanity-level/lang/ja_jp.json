@@ -1,0 +1,13 @@
+{
+  "death.attack.frenzy": "%1$s は正気を保つことが出来なかった。",
+  "effect.sanity-level.calm": "冷静",
+  "effect.sanity-level.sanity_recovery": "正気度回復",
+  "item.sanity-level.caramel": "キャラメル",
+  "item.sanity-level.milk_caramel": "ミルクキャラメル",
+  "item.sanity-level.knot_of_serenity": "安寧の結び目",
+  "item.sanity-level.knot_of_serenity.tooltip": "所持している間、あらゆる要因による精神の摩耗を無効化する",
+  "item.minecraft.potion.effect.calm": "精神安定のポーション",
+  "item.minecraft.splash_potion.effect.calm": "精神安定のスプラッシュポーション",
+  "item.minecraft.lingering_potion.effect.calm": "精神安定の残留ポーション",
+  "item.minecraft.tipped_arrow.effect.calm": "精神安定の矢"
+}

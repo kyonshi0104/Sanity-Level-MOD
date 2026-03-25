@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        "sanity-level:caramel",
+        "sanity-level:caramel",
+        "sanity-level:caramel",
+        "sanity-level:caramel",
+        "minecraft:milk_bucket",
+        "sanity-level:caramel",
+        "sanity-level:caramel",
+        "sanity-level:caramel",
+        "sanity-level:caramel"
+    ],
+    "result": {
+        "id": "sanity-level:milk_caramel",
+        "count": 4
+    }
+}
