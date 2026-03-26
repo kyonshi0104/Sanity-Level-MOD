@@ -38,7 +38,7 @@ public class SanityCommand {
             }
 
             final int finalValue = value;
-            source.sendSuccess(() -> Component.literal("現在の正気度: " + finalValue), false);
+            source.sendSuccess(() -> Component.translatable("commands.sanity.current", finalValue), false);
             return value;
         }
         return 0;
@@ -51,10 +51,10 @@ public class SanityCommand {
         if (player != null) {
             com.kyonshi.util.SanityManager.setSanity(player, value);
 
-            source.sendSuccess(() -> Component.literal("正気度を " + value + " に設定しました"), true);
+            source.sendSuccess(() -> Component.translatable("commands.sanity.set", value), true);
             return 1;
         } else {
-            source.sendFailure(Component.literal("プレイヤーのみ実行可能です"));
+            source.sendFailure(Component.translatable("commands.sanity.player_only"));
             return 0;
         }
     }
@@ -68,12 +68,12 @@ public class SanityCommand {
 
             Integer next = player.getAttached(com.kyonshi.SanityLevel.SANITY);
 
-            if (next == null) source.sendFailure(Component.literal("なんらかのエラーが発生しました。"));
+            if (next == null) source.sendFailure(Component.translatable("commands.sanity.error"));
 
-            source.sendSuccess(() -> Component.literal("正気度を " + amount + " 変更しました (現在: " + next + ")"), true);
+            source.sendSuccess(() -> Component.translatable("commands.sanity.changed", amount, next), true);
             return 1;
         } else {
-            source.sendFailure(Component.literal("プレイヤーのみ実行可能です"));
+            source.sendFailure(Component.translatable("commands.sanity.player_only"));
             return 0;
         }
     }

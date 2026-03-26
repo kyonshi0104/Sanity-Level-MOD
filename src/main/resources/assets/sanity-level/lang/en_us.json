@@ -9,5 +9,10 @@
   "item.minecraft.potion.effect.calm": "Potion of Calm",
   "item.minecraft.splash_potion.effect.calm": "Splash Potion of Calm",
   "item.minecraft.lingering_potion.effect.calm": "Lingering Potion of Calm",
-  "item.minecraft.tipped_arrow.effect.calm": "Arrow of Calm"
+  "item.minecraft.tipped_arrow.effect.calm": "Arrow of Calm",
+  "commands.sanity.current": "Current Sanity: %s",
+  "commands.sanity.set": "Set sanity to %s",
+  "commands.sanity.changed": "Changed sanity by %s (Current: %s)",
+  "commands.sanity.player_only": "This command can only be executed by a player",
+  "commands.sanity.error": "An error has occurred."
 }

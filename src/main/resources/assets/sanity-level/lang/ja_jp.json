@@ -9,5 +9,10 @@
   "item.minecraft.potion.effect.calm": "精神安定のポーション",
   "item.minecraft.splash_potion.effect.calm": "精神安定のスプラッシュポーション",
   "item.minecraft.lingering_potion.effect.calm": "精神安定の残留ポーション",
-  "item.minecraft.tipped_arrow.effect.calm": "精神安定の矢"
+  "item.minecraft.tipped_arrow.effect.calm": "精神安定の矢",
+  "commands.sanity.current": "現在の正気度: %s",
+  "commands.sanity.set": "正気度を %s に設定しました",
+  "commands.sanity.changed": "正気度を %s 変更しました (現在: %s)",
+  "commands.sanity.player_only": "プレイヤーのみ実行可能です",
+  "commands.sanity.error": "なんらかのエラーが発生しました。"
 }
