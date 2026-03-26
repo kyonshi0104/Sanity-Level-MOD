@@ -20,10 +20,10 @@ public class ModPotions {
     private static final List<Holder<Potion>> POTIONS = new ArrayList<>();
 
     public static final Holder<Potion> CALM_POTION = register("calm",
-            new Potion("calm", new MobEffectInstance(SanityLevel.CALM, 3600, 0)));
+            new Potion("calm", new MobEffectInstance(SanityLevel.CALM, 3600, 0,true,true)));
 
     public static final Holder<Potion> LONG_CALM_POTION = register("long_calm",
-            new Potion("calm", new MobEffectInstance(SanityLevel.CALM, 9600, 0)));
+            new Potion("calm", new MobEffectInstance(SanityLevel.CALM, 9600, 0,true,true)));
 
     private static Holder<Potion> register(String name, Potion potion) {
         Holder<Potion> holder = Registry.registerForHolder(
@@ -46,7 +46,7 @@ public class ModPotions {
 
         // 醸造レシピの登録
         FabricBrewingRecipeRegistryBuilder.BUILD.register(builder -> {
-            builder.addMix(Potions.AWKWARD, Items.SHORT_GRASS, CALM_POTION);
+            builder.addMix(Potions.AWKWARD, Items.GLOWSTONE, CALM_POTION);
             builder.addMix(CALM_POTION, Items.REDSTONE, LONG_CALM_POTION);
         });
     }
