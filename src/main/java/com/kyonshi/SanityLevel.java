@@ -19,6 +19,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
+import org.slf4j.LoggerFactory;
 
 public class SanityLevel implements ModInitializer {
     public static final String MOD_ID = "sanity-level";
@@ -32,11 +33,12 @@ public class SanityLevel implements ModInitializer {
 
     public static final AttachmentType<Integer> SANITY = AttachmentRegistry.<Integer>builder()
             .persistent(Codec.INT)
-            .copyOnDeath()
+            .initializer(() -> 20)
             .buildAndRegister(Identifier.fromNamespaceAndPath(MOD_ID, "sanity"));
 
     @Override
     public void onInitialize() {
+
         // コマンド登録
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             SanityCommand.register(dispatcher);
@@ -50,6 +52,10 @@ public class SanityLevel implements ModInitializer {
 
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
             ServerPlayer player = handler.getPlayer();
+
+            if (!player.hasAttached(SanityLevel.SANITY)) {
+                player.setAttached(SanityLevel.SANITY, 20);
+            }
 
             int currentSanity = player.getAttached(SanityLevel.SANITY);
 

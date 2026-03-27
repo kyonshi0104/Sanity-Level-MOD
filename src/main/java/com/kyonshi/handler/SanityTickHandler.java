@@ -59,7 +59,6 @@ public class SanityTickHandler {
         });
 
         ServerPlayerEvents.AFTER_RESPAWN.register((oldPlayer, newPlayer, alive) -> {
-            SanityManager.setSanity(newPlayer, 20);
             SanityManager.syncSanity(newPlayer, 20);
         });
 
@@ -67,7 +66,7 @@ public class SanityTickHandler {
             if (entity instanceof ServerPlayer player) {
                 // プレイヤーが十分に長く寝たか」を判定
                 if (player.isSleepingLongEnough()) {
-                    int current = player.getAttached(SanityLevel.SANITY);
+                    int current = player.getAttachedOrElse(SanityLevel.SANITY,20);
 
                     if (current < 15) {
                         SanityManager.setSanity(player, 15);
@@ -158,7 +157,7 @@ public class SanityTickHandler {
         // 視線接触
         handleEndermanGaze(player, level);
 
-        handleAnomalies(player, player.getAttached(SanityLevel.SANITY), level.getGameTime());
+        handleAnomalies(player, player.getAttachedOrElse(SanityLevel.SANITY,20), level.getGameTime());
     }
 
 
@@ -218,7 +217,7 @@ public class SanityTickHandler {
     }
 
     public static void handleItemUseRestriction(ServerPlayer player) {
-            int sanity = player.getAttached(SanityLevel.SANITY);
+        int sanity = player.getAttachedOrElse(SanityLevel.SANITY, 20);
 
             // 強制ドロップ
             if (sanity <= 4 && player.isUsingItem()) {
