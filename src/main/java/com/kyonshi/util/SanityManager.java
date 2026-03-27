@@ -24,6 +24,6 @@ public class SanityManager {
     }
 
     public static void addSanity(Player player, int amount) {
-        setSanity(player, player.getAttached(SanityLevel.SANITY) + amount);
+        setSanity(player, player.getAttachedOrElse(SanityLevel.SANITY,20) + amount);
     }
 }
