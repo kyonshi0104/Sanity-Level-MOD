@@ -7,13 +7,18 @@ import com.mojang.brigadier.context.CommandContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.permissions.Permission;
+import net.minecraft.server.permissions.Permissions;
 import net.minecraft.world.entity.player.Player;
+
+import java.util.Objects;
 
 public class SanityCommand {
 
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
         dispatcher.register(Commands.literal("sanity")
-                .requires(source -> source.getEntity() instanceof Player)
+                .requires(CommandSourceStack::isPlayer)
+                .requires(source -> source.permissions().hasPermission(Permissions.COMMANDS_MODERATOR))
                 .then(Commands.literal("get")
                         .executes(SanityCommand::getSanity))
                 .then(Commands.literal("set")
