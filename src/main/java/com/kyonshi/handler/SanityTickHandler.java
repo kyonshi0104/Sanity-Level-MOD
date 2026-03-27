@@ -219,20 +219,26 @@ public class SanityTickHandler {
     public static void handleItemUseRestriction(ServerPlayer player) {
         int sanity = player.getAttachedOrElse(SanityLevel.SANITY, 20);
 
-            // 強制ドロップ
-            if (sanity <= 4 && player.isUsingItem()) {
-                ItemStack itemStack = player.getActiveItem();
+        // 強制ドロップ
+        if (sanity <= 4 && player.isUsingItem()) {
+            ItemStack itemStack = player.getActiveItem();
+            InteractionHand activeHand = player.getUsedItemHand(); // 現在使用中の手を取得
 
-                if (!itemStack.isEmpty()) {
-                    player.drop(itemStack.copy(), false, true);
-                    player.setItemInHand(InteractionHand.MAIN_HAND, ItemStack.EMPTY);
-                    player.swing(InteractionHand.MAIN_HAND, true);
-                    player.level().playSound(null, player.getX(), player.getY(), player.getZ(),
-                            SoundEvents.PLAYER_ATTACK_NODAMAGE, SoundSource.PLAYERS, 0.4f, 0.5f);
-                    player.stopUsingItem();
-                }
+            if (!itemStack.isEmpty()) {
+                ItemStack droppedStack = itemStack.copy();
+                player.stopUsingItem();
+                player.setItemInHand(activeHand, ItemStack.EMPTY);
+
+                player.drop(droppedStack, false, true);
+
+                player.swing(activeHand, true);
+                player.level().playSound(null, player.getX(), player.getY(), player.getZ(),
+                        SoundEvents.PLAYER_ATTACK_NODAMAGE, SoundSource.PLAYERS, 0.4f, 0.5f);
+
+                S_LOGGER.info("Item Dropped from {}: {}", activeHand, droppedStack.getHoverName().getString());
             }
         }
+    }
 
     private static void playHallucination(ServerPlayer player) {
         var sounds = List.of(
