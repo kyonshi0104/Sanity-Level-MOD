@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "sanity-level",
-  "version": "${version}",
+  "version": "1.21.11",
   "name": "Sanity Level",
   "description": "Add a sanity system to Minecraft.",
   "authors": [
