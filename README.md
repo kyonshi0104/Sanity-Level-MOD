@@ -28,6 +28,13 @@ A Fabric mod that introduces the concept of sanity to Minecraft.
 アイテムの自動ドロップなどのペナルティが課されます。  
 正気度が0になった場合継続的にダメージを受けます。
 
+<div style="display:flex">
+<img height="144" alt="2026-03-27_12 26 13" src="https://github.com/user-attachments/assets/1a2c25b6-166b-41de-8a37-e17ecfd82b26" />
+<img height="144" alt="2026-03-27_12 27 01" src="https://github.com/user-attachments/assets/e9cc38b3-9b68-46e2-9118-01671e618ab0" />
+<img height="144" alt="2026-03-27_12 34 21" src="https://github.com/user-attachments/assets/9dea83a5-be4e-445f-93ed-95a31b7d6f9f" />
+
+
+</div>
 ---
 
 ## アイテム (Items)
