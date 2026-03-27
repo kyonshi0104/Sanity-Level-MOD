@@ -11,7 +11,7 @@
     "N": "minecraft:end_crystal",
     "Q": "minecraft:quartz",
     "H": "minecraft:heart_of_the_sea",
-    "n": "minecraft:netherite_ingot"
+    "n": "minecraft:totem_of_undying"
   },
   "result": {
     "id": "sanity-level:knot_of_serenity",

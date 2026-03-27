@@ -1,5 +1,6 @@
 {
     "type": "minecraft:crafting_shapeless",
+    "category": "food",
     "ingredients": [
         "sanity-level:caramel",
         "sanity-level:caramel",
