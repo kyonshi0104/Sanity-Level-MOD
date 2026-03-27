@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sugar": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:sugar"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "sanity-level:caramel"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_sugar",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "sanity-level:caramel_cc",
+      "sanity-level:caramel_sl",
+      "sanity-level:caramel_so",
+      "sanity-level:caramel_sm"
+    ]
+  }
+}
