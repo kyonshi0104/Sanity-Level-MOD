@@ -8,7 +8,7 @@
     "kyonshi"
   ],
   "contributors": [
-  "You"
+    "Cloth Config","You"
   ],
   "contact": {
     "homepage": "https://kyonshi.com/minecraft/sanity-level",
@@ -23,6 +23,9 @@
     ],
     "client": [
       "com.kyonshi.SanityLevelClient"
+    ],
+    "modmenu": [
+      "com.kyonshi.client.config.ModMenuIntegration"
     ]
   },
   "mixins": [
