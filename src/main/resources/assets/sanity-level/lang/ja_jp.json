@@ -14,5 +14,10 @@
   "commands.sanity.set": "正気度を %s に設定しました",
   "commands.sanity.changed": "正気度を %s 変更しました (現在: %s)",
   "commands.sanity.player_only": "プレイヤーのみ実行可能です",
-  "commands.sanity.error": "なんらかのエラーが発生しました。"
+  "commands.sanity.error": "なんらかのエラーが発生しました。",
+  "text.autoconfig.sanity-level.title": "正気度システム設定",
+  "text.autoconfig.sanity-level.option.gaugeYOffset": "ゲージの垂直オフセット",
+  "text.autoconfig.sanity-level.option.shaderType": "画面エフェクトの種類",
+  "text.autoconfig.sanity-level.option.shaderType.PIXELATED": "ピクセル化",
+  "text.autoconfig.sanity-level.option.shaderType.BLUR": "ブラー（ぼかし）"
 }

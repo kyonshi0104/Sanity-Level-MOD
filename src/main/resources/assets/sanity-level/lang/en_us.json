@@ -14,5 +14,10 @@
   "commands.sanity.set": "Set sanity to %s",
   "commands.sanity.changed": "Changed sanity by %s (Current: %s)",
   "commands.sanity.player_only": "This command can only be executed by a player",
-  "commands.sanity.error": "An error has occurred."
+  "commands.sanity.error": "An error has occurred.",
+  "text.autoconfig.sanity-level.title": "Sanity Level Settings",
+  "text.autoconfig.sanity-level.option.gaugeYOffset": "Gauge Vertical Offset",
+  "text.autoconfig.sanity-level.option.shaderType": "Screen Effect Type",
+  "text.autoconfig.sanity-level.option.shaderType.PIXELATED": "Pixelated",
+  "text.autoconfig.sanity-level.option.shaderType.BLUR": "Blur"
 }
