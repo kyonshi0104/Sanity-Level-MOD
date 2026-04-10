@@ -54,6 +54,7 @@ public class SanityHudOverlay {
         }
 
         y -= 10;
+        y += com.kyonshi.config.SanityConfig.get().gaugeYOffset;
         // -----------------------
 
         int sanity = SanityLevelClient.currentSanity;

@@ -1,6 +1,7 @@
 package com.kyonshi;
 
 import com.kyonshi.command.SanityCommand;
+import com.kyonshi.config.SanityConfig;
 import com.kyonshi.handler.SanityDamageHandler;
 import com.kyonshi.handler.SanityDeathWitnessHandler;
 import com.kyonshi.handler.SanityTickHandler;
@@ -19,7 +20,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
-import org.slf4j.LoggerFactory;
 
 public class SanityLevel implements ModInitializer {
     public static final String MOD_ID = "sanity-level";
