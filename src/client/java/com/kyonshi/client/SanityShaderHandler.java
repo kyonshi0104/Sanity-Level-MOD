@@ -25,6 +25,8 @@ public class SanityShaderHandler {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             com.kyonshi.config.SanityConfig.ShaderType currentType = com.kyonshi.config.SanityConfig.get().shaderType;
 
+            Identifier actualShaderId = client.gameRenderer.currentPostEffect();
+
             Integer sanity = SanityLevelClient.currentSanity;
             if (sanity == null) return;
 
@@ -41,17 +43,18 @@ public class SanityShaderHandler {
                 targetShader = DESATURATE_WEAK;
             }
 
-            if (currentActiveShader != targetShader || lastConfigType != currentType) {
+            if (actualShaderId == null || !actualShaderId.equals(targetShader)) {
                 if (targetShader != null) {
                     ((GameRendererAccessor) client.gameRenderer).invokeSetPostEffect(targetShader);
-                    LoggerFactory.getLogger("sanity-level").info("Shader Applied: " + targetShader.getPath());
-                } else {
+                } else if (isModShader(actualShaderId)) {
                     client.gameRenderer.clearPostEffect();
-                    LoggerFactory.getLogger("sanity-level").info("Shader Cleared");
                 }
-                currentActiveShader = targetShader;
-                lastConfigType = currentType;
             }
         });
+    }
+
+    private static boolean isModShader(Identifier id) {
+        if (id == null) return false;
+        return id.getNamespace().equals("sanity-level");
     }
 }
