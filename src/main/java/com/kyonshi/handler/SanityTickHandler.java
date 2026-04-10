@@ -295,10 +295,16 @@ public class SanityTickHandler {
     }
 
     private static boolean isNearCampfire(ServerLevel level, BlockPos pos) {
-        return BlockPos.betweenClosedStream(pos.offset(-15, -3, -15), pos.offset(15, 3, 15))
-                .anyMatch(p -> {
+        BlockPos corner1 = pos.offset(-15, -1, -15);
+        BlockPos corner2 = pos.offset(15, 1, 15);
+
+        return BlockPos.betweenClosedStream(corner1, corner2)
+                .filter(p -> {
                     var state = level.getBlockState(p);
-                    return (state.is(Blocks.CAMPFIRE) || state.is(Blocks.SOUL_CAMPFIRE)) && state.getValue(CampfireBlock.LIT);
+                    return state.is(Blocks.CAMPFIRE) || state.is(Blocks.SOUL_CAMPFIRE);
+                })
+                .anyMatch(p -> {
+                    return level.getBlockState(p).getValue(CampfireBlock.LIT);
                 });
     }
 
