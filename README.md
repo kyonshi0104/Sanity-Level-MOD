@@ -3,6 +3,9 @@
 正気度の概念をマイクラに導入するFabric用Mod  
 A Fabric mod that introduces the concept of sanity to Minecraft.
 
+ダウンロードはこちら (Download here)：
+[Modrinth](https://modrinth.com/mod/sanity-level)
+
 ※The English version of the README is below
 
 ---
