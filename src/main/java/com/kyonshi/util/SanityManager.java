@@ -16,14 +16,18 @@ public class SanityManager {
 
     public static void setSanity(Player player, int value) {
         int clampedValue = Mth.clamp(value, 0, 20);
-        player.setAttached(SanityLevel.SANITY, clampedValue);
+        int currentValue = player.getAttachedOrElse(SanityLevel.SANITY, 20);
 
-        if (player instanceof ServerPlayer serverPlayer) {
-            ServerPlayNetworking.send(serverPlayer, new SanitySyncPayload(clampedValue));
+        if (currentValue != clampedValue) {
+            player.setAttached(SanityLevel.SANITY, clampedValue);
+
+            if (player instanceof ServerPlayer serverPlayer) {
+                ServerPlayNetworking.send(serverPlayer, new SanitySyncPayload(clampedValue));
+            }
         }
     }
 
     public static void addSanity(Player player, int amount) {
-        setSanity(player, player.getAttachedOrElse(SanityLevel.SANITY,20) + amount);
+        setSanity(player, player.getAttachedOrElse(SanityLevel.SANITY, 20) + amount);
     }
 }
