@@ -17,6 +17,7 @@ public class SanityLevelClient implements ClientModInitializer {
         ClientPlayNetworking.registerGlobalReceiver(SanitySyncPayload.ID, (payload, context) -> {
             context.client().execute(() -> {
                 currentSanity = payload.sanity();
+                SanityShaderHandler.updateShader(currentSanity);
             });
         });
 

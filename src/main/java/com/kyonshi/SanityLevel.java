@@ -1,7 +1,6 @@
 package com.kyonshi;
 
 import com.kyonshi.command.SanityCommand;
-import com.kyonshi.config.SanityConfig;
 import com.kyonshi.handler.SanityDamageHandler;
 import com.kyonshi.handler.SanityDeathWitnessHandler;
 import com.kyonshi.handler.SanityTickHandler;
