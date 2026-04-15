@@ -52,10 +52,6 @@ public class SanityTickHandler {
                 }
             }
 
-            for (ServerPlayer player : server.getPlayerList().getPlayers()) {
-                handleItemUseRestriction(player);
-            }
-
         });
 
         ServerPlayerEvents.AFTER_RESPAWN.register((oldPlayer, newPlayer, alive) -> {
@@ -154,9 +150,6 @@ public class SanityTickHandler {
             SanityManager.addSanity(player, (change > 0 ? 1 : -1));
         }
 
-        // 視線接触
-        handleEndermanGaze(player, level);
-
         handleAnomalies(player, player.getAttachedOrElse(SanityLevel.SANITY,20), level.getGameTime());
     }
 
@@ -178,34 +171,10 @@ public class SanityTickHandler {
         }
 
 
-        // アイテム
-        if (sanity <= 6 && player.getRandom().nextFloat() <= 0.05f) {
-            ItemStack mainHandItem = player.getMainHandItem();
-            if (!mainHandItem.isEmpty()) {
-                player.drop(mainHandItem.copy(), false, true);
-                player.setItemInHand(InteractionHand.MAIN_HAND, ItemStack.EMPTY);
-                player.swing(InteractionHand.MAIN_HAND, true);
-                player.level().playSound(null, player.getX(), player.getY(), player.getZ(),
-                        SoundEvents.PLAYER_ATTACK_NODAMAGE, SoundSource.PLAYERS, 0.4f, 0.5f);
-                S_LOGGER.info("Item Dropped: {}", mainHandItem.getHoverName().getString());
-            }
-        }
-
         if (sanity <= 4) {
             player.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 60, 0, false, false, false));
         }
 
-        if (sanity <= 3 && player.getRandom().nextFloat() <= 0.15f) {
-            ItemStack mainHandItem = player.getMainHandItem();
-            if (!mainHandItem.isEmpty()) {
-                player.drop(mainHandItem.copy(), false, true);
-                player.setItemInHand(InteractionHand.MAIN_HAND, ItemStack.EMPTY);
-                player.swing(InteractionHand.MAIN_HAND, true);
-                player.level().playSound(null, player.getX(), player.getY(), player.getZ(),
-                        SoundEvents.PLAYER_ATTACK_NODAMAGE, SoundSource.PLAYERS, 0.4f, 0.5f);
-                S_LOGGER.info("Item Dropped: {}", mainHandItem.getHoverName().getString());
-            }
-        }
 
         if (sanity <= 0) {
             player.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 60, 1, false, false, false));
@@ -214,30 +183,6 @@ public class SanityTickHandler {
             player.hurt(player.damageSources().source(FRENZY_KEY), 1.0f);
         }
 
-    }
-
-    public static void handleItemUseRestriction(ServerPlayer player) {
-        int sanity = player.getAttachedOrElse(SanityLevel.SANITY, 20);
-
-        // 強制ドロップ
-        if (sanity <= 4 && player.isUsingItem()) {
-            ItemStack itemStack = player.getActiveItem();
-            InteractionHand activeHand = player.getUsedItemHand(); // 現在使用中の手を取得
-
-            if (!itemStack.isEmpty()) {
-                ItemStack droppedStack = itemStack.copy();
-                player.stopUsingItem();
-                player.setItemInHand(activeHand, ItemStack.EMPTY);
-
-                player.drop(droppedStack, false, true);
-
-                player.swing(activeHand, true);
-                player.level().playSound(null, player.getX(), player.getY(), player.getZ(),
-                        SoundEvents.PLAYER_ATTACK_NODAMAGE, SoundSource.PLAYERS, 0.4f, 0.5f);
-
-                S_LOGGER.info("Item Dropped from {}: {}", activeHand, droppedStack.getHoverName().getString());
-            }
-        }
     }
 
     private static void playHallucination(ServerPlayer player) {
@@ -306,16 +251,6 @@ public class SanityTickHandler {
                 .anyMatch(p -> {
                     return level.getBlockState(p).getValue(CampfireBlock.LIT);
                 });
-    }
-
-    private static void handleEndermanGaze(ServerPlayer player, ServerLevel level) {
-        List<EnderMan> endermen = level.getEntitiesOfClass(EnderMan.class, player.getBoundingBox().inflate(16.0), e -> true);
-        for (EnderMan enderman : endermen) {
-            if (enderman.isLookingAtMe(player, 0.025, true, true, enderman.getEyeY())) {
-                SanityManager.addSanity(player, -5);
-                break;
-            }
-        }
     }
 
 }
